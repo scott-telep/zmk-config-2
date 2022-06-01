@@ -63,6 +63,14 @@
             tapping-term-ms = <200>;
             bindings = <&kp SEMI>, <&kp RET>;
         };
+
+        td1: tap_dance_1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_1";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp MINUS>, <&kp RET>;
+        };
     };
 
     keymap {
@@ -80,7 +88,7 @@
                 left_layer {
                 bindings = <
                 &kp BANG  &kp ATSN  &kp HASH  &kp DLLR  &kp PRCT            &kp AMPS  &kp KMLT  &kp LPAR  &kp RPAR  &kp EQL 
-                &kp GRAVE  &kp ESC  &kp TAB  &kp RALT  &kp LCTL 		    &kp QUOT  &kp DQT  &kp LBRC  &kp RBRC &kp MINUS 
+                &kp GRAVE  &kp ESC  &kp TAB  &kp RALT  &kp LCTL 		    &kp QUOT  &kp DQT  &kp LBRC  &kp RBRC &td1 
                 &kp LSFT  &trans &trans  &trans  &kp CARET 	                &kp PIPE  &kp BSLH  &kp LBKT  &kp RBKT  &kp LSFT 
                                 &mo 1    &kp LGUI					        &kp RGUI  &lt 2 SPC  
                 >;
