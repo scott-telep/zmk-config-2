@@ -24,79 +24,84 @@
             bindings = <&kp TAB>;
         };
         
-         combo_tab {
+        combo_tab {
             timeout-ms = <50>;
             key-positions = <10 11>;
             bindings = <&kp ESC>;
         };
         
-            combo_ralt {
+        combo_ralt {
             timeout-ms = <50>;
             key-positions = <17 16>;
             bindings = <&kp RALT>;
         };
         
-                    combo_lalt {
+        combo_lalt {
             timeout-ms = <50>;
             key-positions = <11 12>;
             bindings = <&kp LALT>;
         };
         
-                           combo_lgui {
+        combo_lgui {
             timeout-ms = <50>;
             key-positions = <12 13>;
             bindings = <&kp LGUI>;
         };
         
-        
-           combo_rgui {
+        combo_rgui {
             timeout-ms = <50>;
             key-positions = <17 18>;
             bindings = <&kp RGUI>;
         };
-        
-
-        
     };
 
-        keymap {
-                compatible = "zmk,keymap";
+    behaviors {
+        td0: tap_dance_0 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_0";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp SEMI>, <&kp RET>;
+        };
+    };
+
+    keymap {
+            compatible = "zmk,keymap";
                 
        		default_layer {
-		bindings = <
-		&kp Q &kp W &kp E &kp R &mt LGUI T 						        &mt RGUI Y  &kp U  &kp I  &kp O  &kp P 
-		&kp A &kp S &kp D &kp F &mt LALT G 			        	        &mt RALT H  &kp J  &kp K  &kp L  &kp SEMI
-		&mt LSFT Z &kp X &kp C &kp V &mt LCTL B				            &mt LCTL N  &kp M  &kp CMMA  &kp DOT  &mt LSFT FSLH
-          			 &lt 1 SPC	&kp LGUI 				                &kp RGUI  &lt 2 SPC 
-		>;
-		};
+                bindings = <
+                &kp Q &kp W &kp E &kp R &mt LGUI T 						        &mt RGUI Y  &kp U  &kp I  &kp O  &kp P 
+                &kp A &kp S &kp D &kp F &mt LALT G 			        	        &mt RALT H  &kp J  &kp K  &kp L  &td0
+                &mt LSFT Z &kp X &kp C &kp V &mt LCTL B				            &mt LCTL N  &kp M  &kp CMMA  &kp DOT  &mt LSFT FSLH
+                            &lt 1 SPC	&kp LGUI 				                &kp RGUI  &lt 2 SPC 
+                >;
+                };
 
-       		left_layer {
-		bindings = <
-		&kp BANG  &kp ATSN  &kp HASH  &kp DLLR  &kp PRCT            &kp AMPS  &kp KMLT  &kp LPAR  &kp RPAR  &kp EQL 
-		&kp GRAVE  &kp ESC  &kp TAB  &kp RALT  &kp LCTL 		    &kp QUOT  &kp DQT  &kp LBRC  &kp RBRC &kp MINUS 
-		&kp LSFT  &trans &trans  &trans  &kp CARET 	                &kp PIPE  &kp BSLH  &kp LBKT  &kp RBKT  &kp LSFT 
-					    &mo 1    &kp LGUI					        &kp RGUI  &lt 2 SPC  
-		>;
-		};
-		
-		right_layer {
-		bindings = <
-		&kp F1  &kp F2 &kp F5  &kp F6  &kp F7    			        &trans &kp NUM_7  &kp NUM_8  &kp NUM_9  &kp BKSP  
-		&kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &kp F8 			    &kp F3  &kp NUM_4  &kp NUM_5  &kp NUM_6  &kp RET
-		&kp LSFT  &kp F9 &kp F10 &kp F11  &kp F12    			    &kp F4  &kp NUM_1  &kp NUM_2  &kp NUM_3  &kp LSFT
-					  &mo 3  &kp NUM_0  				            &kp LCTL   &mo 2 
-		>;
-		};	
-		
-		tri_layer {
-		bindings = <
-		&bt BT_CLR  &bt BT_NXT  &bt BT_PRV  &none  &bootloader 			        &reset  &none   &kp K_MUTE   &none  &none
-		&none  &none  &none  &none  &none  						                &none  &kp PG_UP  &kp C_VOL_UP  &kp C_BRI_INC  &none 
-		&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4 	    &none  &kp PG_DN  &kp C_VOL_DN  &kp C_BRI_DEC  &none   
-		&trans &trans  					                                        &trans  &trans 
-		>;
-		};	
-        
+                left_layer {
+                bindings = <
+                &kp BANG  &kp ATSN  &kp HASH  &kp DLLR  &kp PRCT            &kp AMPS  &kp KMLT  &kp LPAR  &kp RPAR  &kp EQL 
+                &kp GRAVE  &kp ESC  &kp TAB  &kp RALT  &kp LCTL 		    &kp QUOT  &kp DQT  &kp LBRC  &kp RBRC &kp MINUS 
+                &kp LSFT  &trans &trans  &trans  &kp CARET 	                &kp PIPE  &kp BSLH  &kp LBKT  &kp RBKT  &kp LSFT 
+                                &mo 1    &kp LGUI					        &kp RGUI  &lt 2 SPC  
+                >;
+                };
+                
+                right_layer {
+                bindings = <
+                &kp F1  &kp F2 &kp F5  &kp F6  &kp F7    			        &trans &kp NUM_7  &kp NUM_8  &kp NUM_9  &kp BKSP  
+                &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &kp F8 			    &kp F3  &kp NUM_4  &kp NUM_5  &kp NUM_6  &kp RET
+                &kp LSFT  &kp F9 &kp F10 &kp F11  &kp F12    			    &kp F4  &kp NUM_1  &kp NUM_2  &kp NUM_3  &kp LSFT
+                            &mo 3  &kp NUM_0  				            &kp LCTL   &mo 2 
+                >;
+                };	
+                
+                tri_layer {
+                bindings = <
+                &bt BT_CLR  &bt BT_NXT  &bt BT_PRV  &none  &bootloader 			        &reset  &none   &kp K_MUTE   &none  &none
+                &none  &none  &none  &none  &none  						                &none  &kp PG_UP  &kp C_VOL_UP  &kp C_BRI_INC  &none 
+                &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4 	    &none  &kp PG_DN  &kp C_VOL_DN  &kp C_BRI_DEC  &none   
+                &trans &trans  					                                        &trans  &trans 
+                >;
+        };	
 	};
 };
